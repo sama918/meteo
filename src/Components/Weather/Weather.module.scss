@@ -1,0 +1,90 @@
+@import 'src/assets/scss/variables';
+
+.container {
+  display: flex;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.weather_infos {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.temperature {
+  font-size: 3rem;
+  display: flex;
+  gap: $weather-infos-gap;
+}
+
+.date {
+  display: flex;
+  gap: $weather-infos-gap;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+.infos {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;              /* occupe 100% du parent */
+  max-width: 800px;         /* limite la largeur sur desktop */
+  margin-left: auto;        /* centre horizontalement */
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 25px;
+  justify-content: center;
+  gap: calc($weather-infos-gap + 10%);
+  font-size: 0.8rem;
+
+  .border_right {
+    border-right: 3px solid rgba(255, 255, 255, 0.2);
+    padding-right: 1.2rem;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+  .infos {
+    flex-direction: column;
+    width: 100%;            /* plein parent */
+    max-width: 100%;        /* pas de dépassement */
+    gap: 1rem;
+    font-size: 0.9rem;
+
+    .border_right {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-right: 0;
+      padding-bottom: 0.8rem;
+    }
+  }
+}
+
+/* 📲 Tablette */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .infos {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 90%;          /* un peu de marge */
+    gap: 2rem;
+    font-size: 1rem;
+
+    .border_right {
+      border-right: none;
+    }
+  }
+}

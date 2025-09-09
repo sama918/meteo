@@ -21,22 +21,31 @@ function SearchBar() {
 
 
     const getGeolocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser.");
+            return;
+        }
+
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 setSelectedCity(null);
-                setGeoError(false); // pas d'erreur
+                setGeoError(false);
                 setGeoLocation({
                     lon: position.coords.longitude,
                     lat: position.coords.latitude,
                 });
             },
-            (positionError) => {
-                console.log(positionError);
-                setGeoError(true);   // erreur de localisation
+            (error) => {
+                console.log("GEO ERROR", error);
+                if (error.code === error.PERMISSION_DENIED) {
+                    alert("Location access was denied. Please enable it in your browser settings.");
+                }
+                setGeoError(true);
                 setGeoLocation(undefined);
             }
         );
     };
+
 
 
 
